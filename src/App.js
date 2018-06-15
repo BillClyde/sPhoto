@@ -1,19 +1,27 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Route } from 'react-router-dom';
+import Layout from './components/Layout';
+import Home from './components/Home';
+import Share from './components/Share';
+import Export from './components/Export';
+import Import from './components/Import';
+import Profile from './components/Profile';
 
 class App extends Component {
+  state = { activeItem: 'collection'}
+
+  handleItemClick = (e, { name }) =>{ 
+    this.setState({ activeItem: name });
+  }
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+      <Layout activeItem={this.state.activeItem} clickHandler={this.handleItemClick}>
+        <Route exact path='/' component={Home} />
+        <Route path='/profile' component={Profile} />
+        <Route path='/import' component={Import} />
+        <Route path='/export' component={Export} />
+        <Route path='/share' component={Share} />
+      </Layout>
     );
   }
 }
