@@ -1,11 +1,14 @@
-import { all, fork } from 'redux-saga/effects';
+import { all } from 'redux-saga/effects'
+
+export function helloSaga(){
+  console.log('Hello Sagas!')
+}
 
 /**
  * rootSaga
  */
 export default function* root(){
   yield all([
-    fork(/* TODO: write a saga*/),
-    fork(/* TODO: write another saga*/)
+    helloSaga()
   ]);
 }
