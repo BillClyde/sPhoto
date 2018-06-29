@@ -1,7 +1,15 @@
-import { all } from 'redux-saga/effects'
+import { all, takeLatest, call, put } from 'redux-saga/effects'
 
 export function helloSaga(){
   console.log('Hello Sagas!')
+}
+
+export function* watchNavigation(){
+  yield takeLatest('NAVIGATION', navigation)
+}
+
+export function navigation(){
+  console.log('navigation occured')
 }
 
 /**
@@ -9,6 +17,7 @@ export function helloSaga(){
  */
 export default function* root(){
   yield all([
-    helloSaga()
+    helloSaga(),
+    watchNavigation()
   ]);
 }

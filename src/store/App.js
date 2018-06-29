@@ -2,7 +2,10 @@ const NAVIGATION = 'NAVIGATION'
 const initialState = { activeItem: 'collection' }
 
 export const actionCreators = {
-  onMenuItemClick: (e, name) => dispatch({type: NAVIGATION, e, name}) 
+  onMenuItemClick: (e, targetState) => { 
+    const name = targetState.name
+    return {type: NAVIGATION, e, name} 
+  }
 }
 
 export const reducer = (state, action) => {

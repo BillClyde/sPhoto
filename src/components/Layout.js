@@ -1,8 +1,12 @@
 import React from 'react';
 import { Grid } from 'semantic-ui-react';
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+
+import { actionCreators } from '../store/Layout'
 import HeaderMenu from './HeaderMenu';
 import SideMenu from './SideMenu';
-export default props => (
+const Layout = props => (
   <Grid>
     <Grid.Row >
     <Grid.Column>
@@ -18,4 +22,8 @@ export default props => (
       </Grid.Column>
     </Grid.Row>
   </Grid>
-);
+)
+export default connect(
+  state => state.layout,
+  dispatch => bindActionCreators(actionCreators, dispatch)
+)(Layout)

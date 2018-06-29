@@ -7,6 +7,9 @@ import * as Share from './Share'
 import * as Collection from './Collection'
 import * as Profile from './Profile'
 import * as App from './App'
+import * as Layout from './Layout'
+import * as SideMenu from './SideMenu'
+import * as HeaderMenu from './HeaderMenu'
 import root from '../sagas'
 
 export default function configureStore(initialState) {
@@ -16,7 +19,10 @@ export default function configureStore(initialState) {
     share: Share.reducer,
     collection: Collection.reducer,
     profile: Profile.reducer,
-    app: App.reducer
+    app: App.reducer,
+    layout: Layout.reducer,
+    sideMenu: SideMenu.reducer,
+    headerMenu: HeaderMenu.reducer
   }
   
   const sagaMiddleware = createSagaMiddleware()

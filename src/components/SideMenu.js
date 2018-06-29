@@ -1,8 +1,11 @@
 import React from 'react';
 import { Menu } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { actionCreators } from '../store/SideMenu'
 
-export default props => (
+const SideMenu = props => (
       <Menu secondary vertical fluid>
         <Menu.Item name='collection' 
                    active={props.activeItem === 'collection'} 
@@ -23,3 +26,7 @@ export default props => (
                    onClick={props.clickHandler}>Share</Menu.Item>
       </Menu>
 )
+export default connect(
+  state => state.import,
+  dispatch => bindActionCreators(actionCreators, dispatch)
+)(SideMenu)
