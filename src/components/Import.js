@@ -6,5 +6,5 @@ export default connect(
   state => state.import,
   dispatch => bindActionCreators(actionCreators, dispatch)
 )( props => (
- <div>This is the import page</div> 
+ <button onClick={props.onImportFiles}>ImportFiles</button>
 ))
